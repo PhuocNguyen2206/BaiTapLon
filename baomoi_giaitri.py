@@ -36,7 +36,7 @@ def crawl_baomoi_giaitri():
                 content = "\n".join([p.text.strip() for p in content_paragraphs if p.text.strip()])
 
                 results.append([title, description, image_url, content])
-                print("✔ Lấy:", title)
+                print("Lấy:", title)
                 time.sleep(1)
 
             except Exception as e:
