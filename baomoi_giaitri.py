@@ -40,9 +40,8 @@ def crawl_baomoi_giaitri():
                 time.sleep(1)
 
             except Exception as e:
-                print("❌ Lỗi:", e)
+                print("Lỗi:", e)
 
-        # Lấy link trang tiếp theo
         next_btn = soup.select_one("a.next.page-link")
         if next_btn and "href" in next_btn.attrs:
             base_url = "https://baomoi.com" + next_btn["href"]
@@ -50,13 +49,12 @@ def crawl_baomoi_giaitri():
         else:
             break
 
-    # Ghi dữ liệu ra file CSV
     with open("baomoi_giaitri.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["Tiêu đề", "Mô tả", "Ảnh", "Nội dung"])
         writer.writerows(results)
 
-    print(f"✅ Đã lưu {len(results)} bài viết vào baomoi_giaitri.csv")
+    print(f"Đã lưu {len(results)} bài viết vào baomoi_giaitri.csv")
 
 if __name__ == "__main__":
     crawl_baomoi_giaitri()
